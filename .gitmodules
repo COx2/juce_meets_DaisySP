@@ -1,0 +1,6 @@
+[submodule "External/JUCE"]
+	path = External/JUCE
+	url = https://github.com/juce-framework/JUCE.git
+[submodule "External/DaisySP"]
+	path = External/DaisySP
+	url = https://github.com/electro-smith/DaisySP.git
