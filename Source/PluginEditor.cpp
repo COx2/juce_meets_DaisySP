@@ -139,14 +139,14 @@ void AudioPluginAudioProcessorEditor::resized()
             groupOscillator->getX() + groupOscillator->getWidth() * 0.2f, 
             groupOscillator->getY() + groupOscillator->getHeight() * 0.6f);
 
+        comboboxWaveform->setSize(combobox_w, combobox_h);
+        comboboxWaveform->setCentrePosition(
+            groupOscillator->getX() + groupOscillator->getWidth() * 0.5f,
+            groupOscillator->getY() + groupOscillator->getHeight() * 0.5f);
+
         sliderFrequency->setSize(slider_w, slider_h);
         sliderFrequency->setCentrePosition(
             groupOscillator->getX() + groupOscillator->getWidth() * 0.8f, 
-            groupOscillator->getY() + groupOscillator->getHeight() * 0.5f);
-
-        comboboxWaveform->setSize(combobox_w, combobox_h);
-        comboboxWaveform->setCentrePosition(
-            groupOscillator->getX() + groupOscillator->getWidth() * 0.5f, 
             groupOscillator->getY() + groupOscillator->getHeight() * 0.6f);
     }
 
@@ -156,14 +156,14 @@ void AudioPluginAudioProcessorEditor::resized()
             groupTremolo->getX() + groupTremolo->getWidth() * 0.2f,
             groupTremolo->getY() + groupTremolo->getHeight() * 0.6f);
 
-        sliderTremoloDepth->setSize(slider_w, slider_h);
-        sliderTremoloDepth->setCentrePosition(
-            groupTremolo->getX() + groupTremolo->getWidth() * 0.8f,
-            groupTremolo->getY() + groupTremolo->getHeight() * 0.5f);
-
         comboboxTremoloWaveform->setSize(combobox_w, combobox_h);
         comboboxTremoloWaveform->setCentrePosition(
             groupTremolo->getX() + groupTremolo->getWidth() * 0.5f,
+            groupTremolo->getY() + groupTremolo->getHeight() * 0.5f);
+
+        sliderTremoloDepth->setSize(slider_w, slider_h);
+        sliderTremoloDepth->setCentrePosition(
+            groupTremolo->getX() + groupTremolo->getWidth() * 0.8f,
             groupTremolo->getY() + groupTremolo->getHeight() * 0.6f);
     }
 }
