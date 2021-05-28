@@ -1,4 +1,4 @@
-juce_add_plugin(HelloDaisySP
+juce_add_plugin(DrumKit
     # VERSION ...                               # Set this if the plugin version is different to the project version
     # ICON_BIG ...                              # ICON_* arguments specify a path to an image file to use as an icon for the Standalone
     # ICON_SMALL ...
@@ -10,12 +10,12 @@ juce_add_plugin(HelloDaisySP
     EDITOR_WANTS_KEYBOARD_FOCUS FALSE    # Does the editor need keyboard focus?
     COPY_PLUGIN_AFTER_BUILD FALSE        # Should the plugin be installed to a default location after building?
     PLUGIN_MANUFACTURER_CODE Coco               # A four-character manufacturer id with at least one upper-case character
-    PLUGIN_CODE Jdsp                            # A unique four-character plugin id with exactly one upper-case character
+    PLUGIN_CODE Drum                            # A unique four-character plugin id with exactly one upper-case character
                                                 # GarageBand 10.3 requires the first letter to be upper-case, and the remaining letters to be lower-case
     FORMATS AU VST3 Standalone                  # The formats to build. Other valid formats are: AAX Unity VST AU AUv3
-    PRODUCT_NAME "JUCE and DaisySP Example")        # The name of the final executable, which can differ from the target name
+    PRODUCT_NAME "DrumKit")        # The name of the final executable, which can differ from the target name
 
-juce_generate_juce_header(HelloDaisySP)
+juce_generate_juce_header(DrumKit)
 
 ### Find source files with generate source groups ###
 # Test that the target_path should be excluded
@@ -92,20 +92,20 @@ function(generate_source_list output)
 endfunction()
 
 generate_source_list(
-    HelloDaisySP_SOURCES
+    DrumKit_SOURCES
     BASE_DIR "${CMAKE_CURRENT_LIST_DIR}/Source"
     SOURCE_DIRS "${CMAKE_CURRENT_LIST_DIR}/Source"
 #     EXCLUSION_PATTERNS ".+/Test/.+"
     )
 
-target_sources(HelloDaisySP
+target_sources(DrumKit
     PRIVATE
-        ${HelloDaisySP_SOURCES}
+        ${DrumKit_SOURCES}
     )
 
 ###^^^ Find source files with generate source groups ^^^###
 
-target_compile_definitions(HelloDaisySP
+target_compile_definitions(DrumKit
     PUBLIC
         # JUCE_WEB_BROWSER and JUCE_USE_CURL would be on by default, but you might not need them.
         JUCE_WEB_BROWSER=0  # If you remove this, add `NEEDS_WEB_BROWSER TRUE` to the `juce_add_plugin` call
@@ -113,7 +113,7 @@ target_compile_definitions(HelloDaisySP
         JUCE_VST3_CAN_REPLACE_VST2=0
         JUCE_DISPLAY_SPLASH_SCREEN=0)
 
-target_link_libraries(HelloDaisySP
+target_link_libraries(DrumKit
     PRIVATE
         DaisySP
         juce::juce_audio_utils

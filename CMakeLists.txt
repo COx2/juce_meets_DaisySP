@@ -6,3 +6,4 @@ add_subdirectory(External/JUCE)
 add_subdirectory(External/DaisySP)
 
 include(Examples/HelloDaisySP/HelloDaisySP.cmake)
+include(Examples/DrumKit/DrumKit.cmake)
