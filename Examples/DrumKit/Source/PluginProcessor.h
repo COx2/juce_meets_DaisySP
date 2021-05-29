@@ -50,6 +50,8 @@ public:
     juce::AudioProcessorValueTreeState& getProcessorState() { return apvts; }
     juce::AudioProcessorValueTreeState::ParameterLayout createParameterLayout() const;
 
+    juce::MidiKeyboardState& getMidiKeyboardState() { return keyboardState; }
+
     WaveDrawBuffer& getWaveDrawBuffer() { return waveDrawBuffer; }
 
     void triggerBassDrum();
@@ -59,6 +61,7 @@ public:
 private:
     //==============================================================================
     juce::AudioProcessorValueTreeState apvts;
+    juce::MidiKeyboardState keyboardState;
 
     std::unique_ptr<daisysp::SyntheticBassDrum> bassdrum;
     std::unique_ptr<daisysp::SyntheticSnareDrum> snaredrum;

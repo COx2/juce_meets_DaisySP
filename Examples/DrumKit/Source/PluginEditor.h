@@ -26,6 +26,8 @@ private:
     std::unique_ptr<juce::TextButton> buttonSnareDrum;
     std::unique_ptr<juce::TextButton> buttonHiHat;
 
+    std::unique_ptr<juce::MidiKeyboardComponent> midiKeyboard;
+
     juce::OwnedArray<juce::AudioProcessorValueTreeState::SliderAttachment> sliderAttachments;
     juce::OwnedArray<juce::AudioProcessorValueTreeState::ComboBoxAttachment> comboboxAttachments;
 

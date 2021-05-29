@@ -134,7 +134,34 @@ bool AudioPluginAudioProcessor::isBusesLayoutSupported (const BusesLayout& layou
 
 void AudioPluginAudioProcessor::processBlock(juce::AudioBuffer<float>& buffer, juce::MidiBuffer& midiMessages)
 {
-    juce::ignoreUnused(midiMessages);
+    keyboardState.processNextMidiBuffer(midiMessages, 0, buffer.getNumSamples(), true);
+
+    for (const auto iter : midiMessages)
+    {
+        const auto msg = iter.getMessage();
+        if (msg.getNoteNumber() == 36)
+        {
+            if (msg.isNoteOn())
+            {
+                bassdrum->Trig();
+            }
+        }
+        else if (msg.getNoteNumber() == 38)
+        {
+            if (msg.isNoteOn())
+            {
+                snaredrum->Trig();
+            }
+        }
+        else if (msg.getNoteNumber() == 42)
+        {
+            if (msg.isNoteOn())
+            {
+                hihat->Trig();
+            }
+        }
+    }
+
 
     juce::ScopedNoDenormals noDenormals;
     auto totalNumInputChannels = getTotalNumInputChannels();

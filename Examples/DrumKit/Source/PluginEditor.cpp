@@ -7,7 +7,10 @@ AudioPluginAudioProcessorEditor::AudioPluginAudioProcessorEditor (AudioPluginAud
     , buttonBassDrum(std::make_unique<juce::TextButton>("BassDrum", "BassDrum"))
     , buttonSnareDrum(std::make_unique<juce::TextButton>("SnareDrum", "SnareDrum"))
     , buttonHiHat(std::make_unique<juce::TextButton>("HiHat", "HiHat"))
+    , midiKeyboard(std::make_unique<juce::MidiKeyboardComponent>(processorRef.getMidiKeyboardState(), juce::MidiKeyboardComponent::Orientation::horizontalKeyboard))
 {
+    addAndMakeVisible(midiKeyboard.get());
+
     buttonBassDrum->onClick = [this]() {
         processorRef.triggerBassDrum();
     };
@@ -61,7 +64,7 @@ void AudioPluginAudioProcessorEditor::paint (juce::Graphics& g)
     const auto bounds = getLocalBounds();
 
     // Draw wave shape background
-    const juce::Rectangle<float> drawArea = { bounds.getWidth() * 0.1f, bounds.getHeight() * 0.75f, bounds.getWidth() * 0.8f, bounds.getHeight() * 0.225f };
+    const juce::Rectangle<float> drawArea = { bounds.getWidth() * 0.1f, bounds.getHeight() * 0.5f, bounds.getWidth() * 0.8f, bounds.getHeight() * 0.225f };
     g.setColour(juce::Colours::darkgrey);
     g.fillRect(drawArea);
 
@@ -96,6 +99,9 @@ void AudioPluginAudioProcessorEditor::resized()
             rectDrumKit.getX() + rectDrumKit.getWidth() * 0.8f,
             rectDrumKit.getY() + rectDrumKit.getHeight() * 0.6f);
     }
+
+    const auto rect_keyboard = juce::Rectangle<int>(bounds.getWidth() * 0.0f, bounds.getHeight() * 0.8f, bounds.getWidth() * 1.0f, bounds.getHeight() * 0.2f);
+    midiKeyboard->setBounds(rect_keyboard);
 }
 
 void AudioPluginAudioProcessorEditor::timerCallback()
